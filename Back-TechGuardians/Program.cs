@@ -8,6 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Back_TechGuardians.Data;
 using Back_TechGuardians.Repositorios.Interfaces;
 using Back_TechGuardians.Repositorios;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Back_TechGuardians
 {
@@ -15,7 +18,7 @@ namespace Back_TechGuardians
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            var builder = WebApplication.CreateBuilder(args); 
 
             // Add services to the container.
 
@@ -38,7 +41,6 @@ namespace Back_TechGuardians
             #region [cors]
             builder.Services.AddCors();
             #endregion
-
 
             var app = builder.Build();
 

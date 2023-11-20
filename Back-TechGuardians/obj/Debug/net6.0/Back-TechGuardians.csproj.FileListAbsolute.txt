@@ -65,3 +65,4 @@ C:\Users\User\Documents\Back-TechGuardians\Back-TechGuardians\obj\Debug\net6.0\B
 C:\Users\User\Documents\Back-TechGuardians\Back-TechGuardians\obj\Debug\net6.0\ref\Back-TechGuardians.dll
 C:\Users\User\Documents\Back-TechGuardians\Back-TechGuardians\bin\Debug\net6.0\MySqlConnector.dll
 C:\Users\User\Documents\Back-TechGuardians\Back-TechGuardians\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\User\Documents\Back-TechGuardians\Back-TechGuardians\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

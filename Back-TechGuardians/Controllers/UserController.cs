@@ -15,6 +15,22 @@ namespace Back_TechGuardians.Controllers
             _usuarioRepositorio = usuarioRepositorio;
         }
 
+        [HttpPost("login")]
+        public async Task<ActionResult<UserModel>> Login(string email, string password)
+        {
+            List<UserModel> usuarios = await _usuarioRepositorio.GetAll();
+            UserModel usuario = usuarios.FirstOrDefault(u => u.Email == email && u.Password == password);
+
+            if (usuario != null)
+            {
+                return Ok(new { Message = "Credenciais válidas", Usuario = usuario });
+            }
+            else
+            {
+                return Unauthorized("Credenciais inválidas");
+            }
+        }
+
         [HttpGet]
         public async Task<ActionResult<List<UserModel>>> BuscarTodosUsuarios()
         {
