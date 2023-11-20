@@ -11,6 +11,8 @@ namespace Back_TechGuardians.Data.Map
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Block).IsRequired().HasMaxLength(255);
             builder.Property(x => x.Room).IsRequired().HasMaxLength(150);
+            builder.Property(x => x.User).IsRequired().HasMaxLength(255);
+            builder.Property(x => x.Equipament).IsRequired().HasMaxLength(255);
         }
     }
 }

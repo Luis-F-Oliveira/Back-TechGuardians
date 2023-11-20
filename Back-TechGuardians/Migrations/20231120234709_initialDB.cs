@@ -59,43 +59,36 @@ namespace Back_TechGuardians.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Room = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    EquipamentId = table.Column<int>(type: "int", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: true)
+                    User = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Equipament = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UserModelId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Monitorings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Monitorings_Equipaments_EquipamentId",
-                        column: x => x.EquipamentId,
-                        principalTable: "Equipaments",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Monitorings_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Monitorings_Users_UserModelId",
+                        column: x => x.UserModelId,
                         principalTable: "Users",
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Monitorings_EquipamentId",
+                name: "IX_Monitorings_UserModelId",
                 table: "Monitorings",
-                column: "EquipamentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Monitorings_UserId",
-                table: "Monitorings",
-                column: "UserId");
+                column: "UserModelId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Monitorings");
+                name: "Equipaments");
 
             migrationBuilder.DropTable(
-                name: "Equipaments");
+                name: "Monitorings");
 
             migrationBuilder.DropTable(
                 name: "Users");

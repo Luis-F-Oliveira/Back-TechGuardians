@@ -32,8 +32,15 @@ namespace Back_TechGuardians.Controllers
         [HttpPost]
         public async Task<ActionResult<MonitoringModel>> Cadastrar([FromBody] MonitoringModel monitoringModel)
         {
-            MonitoringModel monitoring = await _monitoringRepositorio.Add(monitoringModel);
-            return Ok(monitoring);
+            try
+            {
+                MonitoringModel monitoring = await _monitoringRepositorio.Add(monitoringModel);
+                return Ok(monitoring);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpPut("{id}")]

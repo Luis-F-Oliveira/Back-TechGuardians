@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Back_TechGuardians.Migrations
 {
     [DbContext(typeof(SystemDBContext))]
-    [Migration("20231120174313_initialDB")]
+    [Migration("20231120234709_initialDB")]
     partial class initialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,22 +56,27 @@ namespace Back_TechGuardians.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int?>("EquipamentId")
-                        .HasColumnType("int");
+                    b.Property<string>("Equipament")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Room")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<string>("User")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int?>("UserModelId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EquipamentId");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserModelId");
 
                     b.ToTable("Monitorings");
                 });
@@ -104,17 +109,9 @@ namespace Back_TechGuardians.Migrations
 
             modelBuilder.Entity("Back_TechGuardians.Models.MonitoringModel", b =>
                 {
-                    b.HasOne("Back_TechGuardians.Models.EquipamentModel", "Equipament")
-                        .WithMany()
-                        .HasForeignKey("EquipamentId");
-
-                    b.HasOne("Back_TechGuardians.Models.UserModel", "User")
+                    b.HasOne("Back_TechGuardians.Models.UserModel", null)
                         .WithMany("Monitoring")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Equipament");
-
-                    b.Navigation("User");
+                        .HasForeignKey("UserModelId");
                 });
 
             modelBuilder.Entity("Back_TechGuardians.Models.UserModel", b =>

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Back_TechGuardians.Migrations
 {
     [DbContext(typeof(SystemDBContext))]
-    [Migration("20231120181922_teste")]
-    partial class teste
+    [Migration("20231120234802_2")]
+    partial class _2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,22 +55,22 @@ namespace Back_TechGuardians.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int>("EquipamentId")
-                        .HasColumnType("int");
+                    b.Property<string>("Equipament")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Room")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("User")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EquipamentId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Monitorings");
                 });
@@ -99,30 +99,6 @@ namespace Back_TechGuardians.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Back_TechGuardians.Models.MonitoringModel", b =>
-                {
-                    b.HasOne("Back_TechGuardians.Models.EquipamentModel", "Equipament")
-                        .WithMany()
-                        .HasForeignKey("EquipamentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Back_TechGuardians.Models.UserModel", "User")
-                        .WithMany("Monitoring")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Equipament");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Back_TechGuardians.Models.UserModel", b =>
-                {
-                    b.Navigation("Monitoring");
                 });
 #pragma warning restore 612, 618
         }
