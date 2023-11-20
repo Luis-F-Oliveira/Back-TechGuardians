@@ -35,6 +35,10 @@ namespace Back_TechGuardians
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            #region [cors]
+            builder.Services.AddCors();
+            #endregion
+
 
             var app = builder.Build();
 
@@ -44,6 +48,15 @@ namespace Back_TechGuardians
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            #region [Cors]
+            app.UseCors(c =>
+            {
+                c.AllowAnyHeader();
+                c.AllowAnyMethod();
+                c.AllowAnyOrigin();
+            });
+            #endregion
 
             app.UseHttpsRedirection();
 
