@@ -28,6 +28,7 @@ namespace Back_TechGuardians
 
             builder.Services.AddScoped<IUserRepositorio, UserRepositorio>();
             builder.Services.AddScoped<IEquipamentRepositorio, EquipamentRepositorio>();
+            builder.Services.AddScoped<IMonitoringRepositorio, MonitoringRepositorio>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

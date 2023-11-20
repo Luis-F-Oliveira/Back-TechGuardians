@@ -28,7 +28,7 @@ namespace Back_TechGuardians.Repositorios
 
             if (equipamentId == null)
             {
-                throw new Exception($"Usuario para o ID: {id} não encontrado");
+                throw new Exception($"Equipament para o ID: {id} não encontrado");
             }
 
             equipamentId.Name = equipament.Name;
@@ -54,7 +54,7 @@ namespace Back_TechGuardians.Repositorios
 
             if (equipamentId == null)
             {
-                throw new Exception($"Usuario para o ID: {id} não encontrado");
+                throw new Exception($"Equipament para o ID: {id} não encontrado");
             }
 
             _dbContext.Equipaments.Remove(equipamentId);
