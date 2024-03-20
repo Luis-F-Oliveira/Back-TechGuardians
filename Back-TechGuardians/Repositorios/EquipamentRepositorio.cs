@@ -12,6 +12,7 @@ namespace Back_TechGuardians.Repositorios
         {
             _dbContext = dBContext;
         }
+        
         public async Task<List<EquipamentModel>> GetAll()
         {
             return await _dbContext.Equipaments.ToListAsync();
